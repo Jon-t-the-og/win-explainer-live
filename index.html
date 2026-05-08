@@ -1,0 +1,590 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>How Win Works — Proof of Action</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink: #06091a;
+    --ink-2: #0c1130;
+    --line: #1c2350;
+    --text: #e9ecff;
+    --mute: #8a93c9;
+    --teal: #2ee5c2;
+    --blue: #4d8cff;
+    --violet: #9b6cff;
+    --gold: #ffc266;
+    --rose: #ff6e98;
+  }
+  html, body { background: var(--ink); color: var(--text); font-family: 'Inter', system-ui, sans-serif; }
+  body { background:
+    radial-gradient(ellipse 1200px 600px at 80% -10%, rgba(46,229,194,0.10), transparent 70%),
+    radial-gradient(ellipse 1000px 500px at 0% 30%, rgba(77,140,255,0.10), transparent 70%),
+    var(--ink);
+  }
+  .grad-text { background: linear-gradient(90deg, #2ee5c2, #4d8cff 60%, #9b6cff); -webkit-background-clip: text; background-clip: text; color: transparent; }
+  .panel { background: linear-gradient(180deg, rgba(255,255,255,0.025), rgba(255,255,255,0.01)); border: 1px solid var(--line); border-radius: 22px; }
+  .chip { display:inline-flex; align-items:center; gap:8px; padding:6px 12px; border-radius:999px; border:1px solid var(--line); background:rgba(255,255,255,0.02); font-size:12px; color:var(--mute); letter-spacing:0.04em; text-transform:uppercase; font-weight:500; }
+  .num { font-feature-settings: "tnum"; font-variant-numeric: tabular-nums; }
+  .hairline { height:1px; background: linear-gradient(90deg, transparent, var(--line), transparent); }
+  .tag { font-size:11px; letter-spacing:0.12em; text-transform:uppercase; color:var(--mute); font-weight:600; }
+  .kbd { padding:2px 8px; border-radius:6px; border:1px solid var(--line); background:#0a0f2a; font-size:12px; color:var(--text); }
+  .glow { box-shadow: 0 0 0 1px rgba(46,229,194,0.18), 0 20px 60px -20px rgba(46,229,194,0.25); }
+  .scrolly { scrollbar-width:thin; }
+  .ring-anim { animation: pulse 2.6s ease-in-out infinite; }
+  @keyframes pulse { 0%,100%{ opacity:0.4 } 50%{ opacity:1 } }
+  .arc-flow path { stroke-dasharray: 6 8; animation: dash 18s linear infinite; }
+  @keyframes dash { to { stroke-dashoffset: -200; } }
+  .ticker { animation: drift 14s linear infinite; }
+  @keyframes drift { 0%{transform:translateX(0)} 100%{transform:translateX(-50%)} }
+  details summary::-webkit-details-marker { display:none; }
+  details summary { cursor:pointer; }
+  .nav-link:hover { color: var(--text); }
+</style>
+</head>
+<body class="antialiased">
+
+<!-- ===================== TOP NAV ===================== -->
+<header class="max-w-7xl mx-auto px-6 py-6 flex items-center justify-between">
+  <div class="flex items-center gap-3">
+    <div class="w-9 h-9 rounded-xl flex items-center justify-center" style="background:linear-gradient(135deg,#2ee5c2,#4d8cff)">
+      <span class="text-[#06091a] font-black text-lg">W</span>
+    </div>
+    <div>
+      <div class="font-bold tracking-tight">Win Blockchain</div>
+      <div class="text-xs" style="color:var(--mute)">Proof of Action</div>
+    </div>
+  </div>
+  <nav class="hidden md:flex items-center gap-7 text-sm" style="color:var(--mute)">
+    <a class="nav-link" href="#flywheel">Flywheel</a>
+    <a class="nav-link" href="#dollar">Where the dollar goes</a>
+    <a class="nav-link" href="#commissions">Commissions</a>
+    <a class="nav-link" href="#impact">Impact rank-up</a>
+    <a class="nav-link" href="#score">Win Score</a>
+    <a class="nav-link" href="#nsr">NSR pools</a>
+    <a class="nav-link" href="#journey">The journey</a>
+  </nav>
+</header>
+
+<!-- ===================== HERO ===================== -->
+<section class="max-w-7xl mx-auto px-6 pt-10 pb-24">
+  <div class="chip mb-6"><span class="ring-anim w-1.5 h-1.5 rounded-full" style="background:var(--teal)"></span>Live network · Proof of Action protocol</div>
+  <h1 class="text-5xl md:text-7xl font-extrabold leading-[1.02] tracking-tight max-w-5xl">
+    <span class="grad-text">Get paid daily</span> for the action you actually take.
+  </h1>
+  <p class="mt-6 text-lg md:text-xl max-w-3xl" style="color:var(--mute)">
+    Win is a blockchain that turns real-world activity — sales, referrals, learning, sharing, building — into on-chain rewards.
+    Customers pay. The network buys WIN. Seventy cents of every dollar goes back to the people building it.
+  </p>
+  <div class="mt-10 grid sm:grid-cols-3 gap-4 max-w-3xl">
+    <div class="panel p-5">
+      <div class="tag">comp ratio</div>
+      <div class="text-4xl font-extrabold mt-2 num">70%</div>
+      <div class="text-sm mt-1" style="color:var(--mute)">of every dollar is paid back to humans</div>
+    </div>
+    <div class="panel p-5">
+      <div class="tag">named rewards</div>
+      <div class="text-4xl font-extrabold mt-2 num">4 × 10%</div>
+      <div class="text-sm mt-1" style="color:var(--mute)">Transaction · Confirmation · Block 1 · Block 2</div>
+    </div>
+    <div class="panel p-5">
+      <div class="tag">node support pool</div>
+      <div class="text-4xl font-extrabold mt-2 num">30%</div>
+      <div class="text-sm mt-1" style="color:var(--mute)">distributed by daily Win Score rank</div>
+    </div>
+  </div>
+</section>
+
+<div class="hairline max-w-7xl mx-auto"></div>
+
+<!-- ===================== FLYWHEEL ===================== -->
+<section id="flywheel" class="max-w-7xl mx-auto px-6 py-24">
+  <div class="grid lg:grid-cols-12 gap-10 items-center">
+    <div class="lg:col-span-5">
+      <div class="tag mb-3" style="color:var(--teal)">01 · The flywheel</div>
+      <h2 class="text-4xl md:text-5xl font-bold tracking-tight">Real revenue. Real buy pressure. Real distribution.</h2>
+      <p class="mt-5 text-lg" style="color:var(--mute)">
+        Customers pay in stablecoins or fiat. <span style="color:var(--text)">SmartFlow takes that revenue to market and buys WIN tokens.</span>
+        Those tokens are then distributed daily — to sellers, to lineages, and to the network's top performers.
+      </p>
+      <ul class="mt-6 space-y-3 text-sm" style="color:var(--mute)">
+        <li class="flex gap-3"><span class="num font-bold" style="color:var(--teal)">→</span> Tokens aren't printed out of thin air — they're <span style="color:var(--text)">bought with revenue</span>.</li>
+        <li class="flex gap-3"><span class="num font-bold" style="color:var(--teal)">→</span> Holders can spend WIN on <span style="color:var(--text)">gas, node renewals, and products</span>.</li>
+        <li class="flex gap-3"><span class="num font-bold" style="color:var(--teal)">→</span> The loop closes: spending becomes revenue becomes new buy pressure.</li>
+      </ul>
+    </div>
+    <div class="lg:col-span-7">
+      <!-- Flywheel SVG -->
+      <div class="panel p-6 md:p-10 relative overflow-hidden">
+        <svg viewBox="0 0 600 480" class="w-full h-auto">
+          <defs>
+            <linearGradient id="g1" x1="0" x2="1"><stop offset="0" stop-color="#2ee5c2"/><stop offset="1" stop-color="#4d8cff"/></linearGradient>
+            <linearGradient id="g2" x1="0" x2="1"><stop offset="0" stop-color="#4d8cff"/><stop offset="1" stop-color="#9b6cff"/></linearGradient>
+            <linearGradient id="g3" x1="0" x2="1"><stop offset="0" stop-color="#9b6cff"/><stop offset="1" stop-color="#ff6e98"/></linearGradient>
+            <linearGradient id="g4" x1="0" x2="1"><stop offset="0" stop-color="#ff6e98"/><stop offset="1" stop-color="#ffc266"/></linearGradient>
+            <linearGradient id="g5" x1="0" x2="1"><stop offset="0" stop-color="#ffc266"/><stop offset="1" stop-color="#2ee5c2"/></linearGradient>
+            <filter id="soft" x="-50%" y="-50%" width="200%" height="200%"><feGaussianBlur stdDeviation="14"/></filter>
+          </defs>
+
+          <!-- Center -->
+          <circle cx="300" cy="240" r="60" fill="url(#g1)" opacity="0.2"/>
+          <circle cx="300" cy="240" r="44" fill="#0c1130" stroke="url(#g1)" stroke-width="2"/>
+          <text x="300" y="232" text-anchor="middle" font-size="13" font-weight="700" fill="#e9ecff">SmartFlow</text>
+          <text x="300" y="252" text-anchor="middle" font-size="10" fill="#8a93c9">buy &amp; distribute</text>
+
+          <!-- 5 nodes around center -->
+          <!-- Node 1: Customer pays -->
+          <g>
+            <circle cx="300" cy="60" r="38" fill="#0c1130" stroke="#2ee5c2" stroke-width="1.5"/>
+            <text x="300" y="56" text-anchor="middle" font-size="11" font-weight="600" fill="#e9ecff">Customer</text>
+            <text x="300" y="72" text-anchor="middle" font-size="11" font-weight="600" fill="#e9ecff">pays $</text>
+          </g>
+          <!-- Node 2: Buys WIN -->
+          <g>
+            <circle cx="500" cy="170" r="38" fill="#0c1130" stroke="#4d8cff" stroke-width="1.5"/>
+            <text x="500" y="166" text-anchor="middle" font-size="11" font-weight="600" fill="#e9ecff">Market buy</text>
+            <text x="500" y="182" text-anchor="middle" font-size="11" font-weight="600" fill="#e9ecff">of WIN</text>
+          </g>
+          <!-- Node 3: 70% to humans -->
+          <g>
+            <circle cx="450" cy="380" r="38" fill="#0c1130" stroke="#9b6cff" stroke-width="1.5"/>
+            <text x="450" y="376" text-anchor="middle" font-size="11" font-weight="600" fill="#e9ecff">70% paid</text>
+            <text x="450" y="392" text-anchor="middle" font-size="11" font-weight="600" fill="#e9ecff">to humans</text>
+          </g>
+          <!-- Node 4: WIN spent -->
+          <g>
+            <circle cx="150" cy="380" r="38" fill="#0c1130" stroke="#ff6e98" stroke-width="1.5"/>
+            <text x="150" y="376" text-anchor="middle" font-size="11" font-weight="600" fill="#e9ecff">Spent on gas,</text>
+            <text x="150" y="392" text-anchor="middle" font-size="11" font-weight="600" fill="#e9ecff">renewals, cart</text>
+          </g>
+          <!-- Node 5: 30% to ops -->
+          <g>
+            <circle cx="100" cy="170" r="38" fill="#0c1130" stroke="#ffc266" stroke-width="1.5"/>
+            <text x="100" y="166" text-anchor="middle" font-size="11" font-weight="600" fill="#e9ecff">30% to ops</text>
+            <text x="100" y="182" text-anchor="middle" font-size="11" font-weight="600" fill="#e9ecff">+ Battery</text>
+          </g>
+
+          <!-- Connecting flow arcs -->
+          <g class="arc-flow" fill="none" stroke-width="1.5">
+            <path d="M 300 100 Q 420 110 462 152" stroke="url(#g1)"/>
+            <path d="M 500 210 Q 540 300 478 350" stroke="url(#g2)"/>
+            <path d="M 415 400 Q 300 470 188 400" stroke="url(#g3)"/>
+            <path d="M 122 350 Q 80 290 100 210" stroke="url(#g4)"/>
+            <path d="M 130 144 Q 200 70 262 64" stroke="url(#g5)"/>
+          </g>
+
+          <!-- Tiny gradient bursts for energy -->
+          <circle cx="300" cy="240" r="80" fill="url(#g1)" opacity="0.18" filter="url(#soft)"/>
+        </svg>
+        <div class="text-center text-xs mt-2" style="color:var(--mute)">SmartFlow loop · revenue in, WIN bought, distributed daily</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== WHERE EVERY DOLLAR GOES ===================== -->
+<section id="dollar" class="max-w-7xl mx-auto px-6 py-24">
+  <div class="tag mb-3" style="color:var(--blue)">02 · Where every dollar goes</div>
+  <h2 class="text-4xl md:text-5xl font-bold tracking-tight max-w-3xl">$1.00 of revenue, broken down to the cent.</h2>
+  <p class="mt-4 text-lg max-w-3xl" style="color:var(--mute)">No black box. Every dollar is split the same way, every time, on-chain.</p>
+
+  <div class="panel p-6 md:p-10 mt-10">
+    <!-- Stacked bar -->
+    <div class="grid grid-cols-10 gap-1.5 h-20 rounded-xl overflow-hidden">
+      <div class="col-span-3 flex items-center justify-center text-xs font-semibold" style="background:linear-gradient(135deg,#ffc266,#ff8a3a); color:#06091a">30% Ops</div>
+      <div class="col-span-1 flex items-center justify-center text-xs font-semibold text-center px-1" style="background:linear-gradient(135deg,#2ee5c2,#34c8a8); color:#06091a">10% Tx</div>
+      <div class="col-span-1 flex items-center justify-center text-xs font-semibold text-center px-1" style="background:linear-gradient(135deg,#34c8a8,#3aa9d6); color:#06091a">10% Confirm</div>
+      <div class="col-span-1 flex items-center justify-center text-xs font-semibold text-center px-1" style="background:linear-gradient(135deg,#4d8cff,#6f7eff); color:#06091a">10% Block 1</div>
+      <div class="col-span-1 flex items-center justify-center text-xs font-semibold text-center px-1" style="background:linear-gradient(135deg,#9b6cff,#b65fe6); color:#06091a">10% Block 2</div>
+      <div class="col-span-3 flex items-center justify-center text-xs font-semibold" style="background:linear-gradient(135deg,#ff6e98,#ff4f80); color:#06091a">30% NSR (rank pools)</div>
+    </div>
+    <div class="grid grid-cols-10 gap-1.5 mt-3 text-xs" style="color:var(--mute)">
+      <div class="col-span-3">SmartFlow → Hosting, legal, dev, brand, community</div>
+      <div class="col-span-1 text-center">to seller</div>
+      <div class="col-span-1 text-center">to seller's sponsor</div>
+      <div class="col-span-1 text-center">to 1st Impact upline</div>
+      <div class="col-span-1 text-center">to 2nd Impact upline</div>
+      <div class="col-span-3 text-center">Top 50 / 500 / 5K / 50K — by Win Score</div>
+    </div>
+
+    <div class="hairline my-8"></div>
+
+    <div class="grid md:grid-cols-2 gap-8">
+      <div>
+        <div class="tag mb-3">70% pass-through to humans</div>
+        <p style="color:var(--mute)">Forty cents in named lineage rewards plus thirty cents in the global Node Support Rewards pool. The most generous comp ratio in any blockchain comp-plan we know of.</p>
+      </div>
+      <div>
+        <div class="tag mb-3">30% runs the network</div>
+        <p style="color:var(--mute)">Hosting, dev, legal, marketing, brand operations — routed through SmartFlow into 12 transparent reward pools, every dollar trackable on-chain.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== THE FOUR COMMISSIONS ===================== -->
+<section id="commissions" class="max-w-7xl mx-auto px-6 py-24">
+  <div class="tag mb-3" style="color:var(--violet)">03 · The four 10% commissions</div>
+  <h2 class="text-4xl md:text-5xl font-bold tracking-tight max-w-3xl">Two fixed positions. Two that compress to find you.</h2>
+  <p class="mt-4 text-lg max-w-3xl" style="color:var(--mute)">Transaction and Confirmation always pay the same positions in the lineage. Block 1 and Block 2 roll up the chain until they find qualified Impact BlockBots.</p>
+
+  <div class="grid lg:grid-cols-12 gap-8 mt-10">
+    <!-- Lineage tree -->
+    <div class="lg:col-span-7 panel p-6 md:p-10">
+      <svg viewBox="0 0 700 540" class="w-full h-auto">
+        <defs>
+          <linearGradient id="lg1" x1="0" x2="0" y1="0" y2="1">
+            <stop offset="0" stop-color="#2ee5c2"/><stop offset="1" stop-color="#4d8cff"/>
+          </linearGradient>
+        </defs>
+
+        <!-- chain rungs (top to bottom = upline to downline) -->
+        <!-- Top: 2nd Impact upline -->
+        <g>
+          <rect x="200" y="20" width="300" height="60" rx="14" fill="#0c1130" stroke="#9b6cff" stroke-width="1.5"/>
+          <text x="350" y="46" text-anchor="middle" font-size="13" font-weight="700" fill="#e9ecff">2nd Impact BlockBot in lineage</text>
+          <text x="350" y="64" text-anchor="middle" font-size="11" fill="#9b6cff">receives Block 2 · 10%</text>
+        </g>
+        <!-- middle (non-Impact relay) -->
+        <g opacity="0.55">
+          <rect x="240" y="110" width="220" height="44" rx="10" fill="#0c1130" stroke="#1c2350"/>
+          <text x="350" y="138" text-anchor="middle" font-size="11" fill="#8a93c9">non-Impact upline · skipped</text>
+        </g>
+        <!-- 1st Impact upline -->
+        <g>
+          <rect x="200" y="180" width="300" height="60" rx="14" fill="#0c1130" stroke="#4d8cff" stroke-width="1.5"/>
+          <text x="350" y="206" text-anchor="middle" font-size="13" font-weight="700" fill="#e9ecff">1st Impact BlockBot in lineage</text>
+          <text x="350" y="224" text-anchor="middle" font-size="11" fill="#4d8cff">receives Block 1 · 10%</text>
+        </g>
+        <!-- non-Impact relay -->
+        <g opacity="0.55">
+          <rect x="240" y="270" width="220" height="44" rx="10" fill="#0c1130" stroke="#1c2350"/>
+          <text x="350" y="298" text-anchor="middle" font-size="11" fill="#8a93c9">non-Impact upline · skipped</text>
+        </g>
+        <!-- Sponsor of seller -->
+        <g>
+          <rect x="200" y="340" width="300" height="60" rx="14" fill="#0c1130" stroke="#2ee5c2" stroke-width="1.5"/>
+          <text x="350" y="366" text-anchor="middle" font-size="13" font-weight="700" fill="#e9ecff">Seller's direct sponsor</text>
+          <text x="350" y="384" text-anchor="middle" font-size="11" fill="#2ee5c2">receives Confirmation · 10%</text>
+        </g>
+        <!-- Seller -->
+        <g>
+          <rect x="200" y="430" width="300" height="60" rx="14" fill="#0c1130" stroke="#ffc266" stroke-width="1.5"/>
+          <text x="350" y="456" text-anchor="middle" font-size="13" font-weight="700" fill="#e9ecff">Seller (the one who made the sale)</text>
+          <text x="350" y="474" text-anchor="middle" font-size="11" fill="#ffc266">receives Transaction · 10%</text>
+        </g>
+
+        <!-- Compression arrows on left for Block1 / Block2 -->
+        <g stroke-dasharray="4 4" fill="none">
+          <!-- Block 1 path: from seller, skip middle, to 1st Impact -->
+          <path d="M 200 460 C 80 460 80 210 200 210" stroke="#4d8cff" stroke-width="2"/>
+          <text x="60" y="340" text-anchor="middle" font-size="11" font-weight="700" fill="#4d8cff" transform="rotate(-90 60 340)">Block 1 compresses up</text>
+          <!-- Block 2 path: from seller all the way up to 2nd impact -->
+          <path d="M 500 460 C 640 460 640 50 500 50" stroke="#9b6cff" stroke-width="2"/>
+          <text x="660" y="270" text-anchor="middle" font-size="11" font-weight="700" fill="#9b6cff" transform="rotate(90 660 270)">Block 2 compresses higher</text>
+        </g>
+
+        <!-- straight downline links between adjacent rungs -->
+        <g stroke="#1c2350" stroke-width="1">
+          <line x1="350" y1="80" x2="350" y2="110"/>
+          <line x1="350" y1="154" x2="350" y2="180"/>
+          <line x1="350" y1="240" x2="350" y2="270"/>
+          <line x1="350" y1="314" x2="350" y2="340"/>
+          <line x1="350" y1="400" x2="350" y2="430"/>
+        </g>
+      </svg>
+    </div>
+
+    <div class="lg:col-span-5 space-y-5">
+      <div class="panel p-5">
+        <div class="flex items-center gap-3"><span class="w-2.5 h-2.5 rounded-full" style="background:#ffc266"></span><div class="font-semibold">Transaction · 10%</div></div>
+        <p class="text-sm mt-2" style="color:var(--mute)">Always paid to the seller — the person who made the sale. Requires owning a BlockBot.</p>
+      </div>
+      <div class="panel p-5">
+        <div class="flex items-center gap-3"><span class="w-2.5 h-2.5 rounded-full" style="background:#2ee5c2"></span><div class="font-semibold">Confirmation · 10%</div></div>
+        <p class="text-sm mt-2" style="color:var(--mute)">Always paid to the seller's direct sponsor. The person who brought the seller into the network earns on every sale that seller makes.</p>
+      </div>
+      <div class="panel p-5">
+        <div class="flex items-center gap-3"><span class="w-2.5 h-2.5 rounded-full" style="background:#4d8cff"></span><div class="font-semibold">Block 1 · 10%</div></div>
+        <p class="text-sm mt-2" style="color:var(--mute)">Compresses up the lineage to the <span style="color:var(--text)">first qualified Impact BlockBot</span>. If the seller is Impact, it stacks on top of their Transaction — making their direct sale a 20% payout.</p>
+      </div>
+      <div class="panel p-5">
+        <div class="flex items-center gap-3"><span class="w-2.5 h-2.5 rounded-full" style="background:#9b6cff"></span><div class="font-semibold">Block 2 · 10%</div></div>
+        <p class="text-sm mt-2" style="color:var(--mute)">Keeps compressing past Block 1 to find the <span style="color:var(--text)">next qualified Impact BlockBot</span> above. Ranking up early makes you a magnet for compression from your entire downline tree.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== IMPACT RANK-UP ===================== -->
+<section id="impact" class="max-w-7xl mx-auto px-6 py-24">
+  <div class="tag mb-3" style="color:var(--gold)">04 · Becoming Impact</div>
+  <h2 class="text-4xl md:text-5xl font-bold tracking-tight max-w-3xl">Sell 4 BlockBots. Your income doubles. The lion's share unlocks.</h2>
+
+  <div class="grid md:grid-cols-2 gap-6 mt-10">
+    <!-- Pre-Impact -->
+    <div class="panel p-6 md:p-8">
+      <div class="tag" style="color:var(--mute)">BlockBot owner · pre-Impact</div>
+      <div class="mt-4 flex items-baseline gap-2">
+        <div class="text-6xl font-black">10<span class="grad-text">%</span></div>
+        <div class="text-lg" style="color:var(--mute)">on your direct sales</div>
+      </div>
+      <div class="mt-2 flex items-baseline gap-2">
+        <div class="text-6xl font-black">10<span class="grad-text">%</span></div>
+        <div class="text-lg" style="color:var(--mute)">on your team's sales</div>
+      </div>
+      <div class="hairline my-6"></div>
+      <ul class="text-sm space-y-2" style="color:var(--mute)">
+        <li>✓ Transaction Reward (your sales)</li>
+        <li>✓ Confirmation Reward (your team's sales)</li>
+        <li>✗ No Block 1 / Block 2 compression</li>
+        <li>✗ No NSR pool access</li>
+      </ul>
+    </div>
+
+    <!-- Post-Impact -->
+    <div class="panel p-6 md:p-8 glow" style="border-color:rgba(46,229,194,0.4)">
+      <div class="tag" style="color:var(--teal)">Impact BlockBot · sold 4</div>
+      <div class="mt-4 flex items-baseline gap-2">
+        <div class="text-6xl font-black">20<span class="grad-text">%</span></div>
+        <div class="text-lg" style="color:var(--mute)">on your direct sales</div>
+      </div>
+      <div class="mt-2 flex items-baseline gap-2">
+        <div class="text-6xl font-black">20<span class="grad-text">%</span></div>
+        <div class="text-lg" style="color:var(--mute)">on your team's sales</div>
+      </div>
+      <div class="hairline my-6"></div>
+      <ul class="text-sm space-y-2" style="color:var(--mute)">
+        <li><span style="color:var(--teal)">★</span> Transaction + Block 1 stack on your sales</li>
+        <li><span style="color:var(--teal)">★</span> Confirmation + Block 2 stack on team sales</li>
+        <li><span style="color:var(--teal)">★</span> Compression rewards from your whole downline tree</li>
+        <li><span style="color:var(--teal)">★</span> Access to the NSR ranking pools — daily payout by Win Score</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="panel p-6 mt-6 text-sm" style="color:var(--mute)">
+    <span style="color:var(--text)" class="font-semibold">The math of the rank-up:</span>
+    Sell 4 BlockBots at $2,500 each = $10,000 of revenue facilitated → up to $1,000 Transaction + $1,000 Confirmation in cash, plus 4× 25% product credits convert to a free 5th BlockBot, plus you rank up to Impact.
+    Roughly 45% return on the revenue you facilitate — <span style="color:var(--text)">before the bigger NSR rewards even kick in</span>.
+  </div>
+</section>
+
+<!-- ===================== WIN SCORE ===================== -->
+<section id="score" class="max-w-7xl mx-auto px-6 py-24">
+  <div class="grid lg:grid-cols-12 gap-10 items-center">
+    <div class="lg:col-span-5">
+      <div class="tag mb-3" style="color:var(--rose)">05 · The Win Score</div>
+      <h2 class="text-4xl md:text-5xl font-bold tracking-tight">Today matters most. Yesterday still counts.</h2>
+      <p class="mt-5 text-lg" style="color:var(--mute)">
+        Win Score is the daily 0–100 metric that determines your rank. It blends five time windows — so you can't coast on past wins, but your history isn't erased the moment you take a day off.
+      </p>
+      <p class="mt-4 text-sm" style="color:var(--mute)">
+        Daily Win Score gets averaged into a 30-day <span style="color:var(--text)">Complete Win Score</span> that determines your rank in the NSR ranking pools.
+      </p>
+    </div>
+
+    <div class="lg:col-span-7">
+      <div class="panel p-6 md:p-10">
+        <!-- 5 horizontal bars sized 50/20/15/10/5 -->
+        <div class="space-y-4">
+          <div>
+            <div class="flex justify-between text-sm mb-1.5"><span class="font-semibold">Today</span><span class="num" style="color:var(--mute)">50%</span></div>
+            <div class="h-3 rounded-full overflow-hidden" style="background:#0a0f2a"><div class="h-full" style="width:100%;background:linear-gradient(90deg,#2ee5c2,#4d8cff)"></div></div>
+          </div>
+          <div>
+            <div class="flex justify-between text-sm mb-1.5"><span class="font-semibold">Past 7 days</span><span class="num" style="color:var(--mute)">20%</span></div>
+            <div class="h-3 rounded-full overflow-hidden" style="background:#0a0f2a"><div class="h-full" style="width:40%;background:linear-gradient(90deg,#4d8cff,#6f7eff)"></div></div>
+          </div>
+          <div>
+            <div class="flex justify-between text-sm mb-1.5"><span class="font-semibold">Past 30 days</span><span class="num" style="color:var(--mute)">15%</span></div>
+            <div class="h-3 rounded-full overflow-hidden" style="background:#0a0f2a"><div class="h-full" style="width:30%;background:linear-gradient(90deg,#6f7eff,#9b6cff)"></div></div>
+          </div>
+          <div>
+            <div class="flex justify-between text-sm mb-1.5"><span class="font-semibold">Past 365 days</span><span class="num" style="color:var(--mute)">10%</span></div>
+            <div class="h-3 rounded-full overflow-hidden" style="background:#0a0f2a"><div class="h-full" style="width:20%;background:linear-gradient(90deg,#9b6cff,#ff6e98)"></div></div>
+          </div>
+          <div>
+            <div class="flex justify-between text-sm mb-1.5"><span class="font-semibold">All-time</span><span class="num" style="color:var(--mute)">5%</span></div>
+            <div class="h-3 rounded-full overflow-hidden" style="background:#0a0f2a"><div class="h-full" style="width:10%;background:linear-gradient(90deg,#ff6e98,#ffc266)"></div></div>
+          </div>
+        </div>
+
+        <div class="hairline my-7"></div>
+
+        <div class="grid grid-cols-3 gap-4 text-xs">
+          <div><div class="tag mb-1">point sources</div><div style="color:var(--mute)">Direct rewards · Node uptime · Referrals · Team activity · Giving</div></div>
+          <div><div class="tag mb-1">multiplier</div><div style="color:var(--mute)">100% minus % of BlockBots ranked above you in each window</div></div>
+          <div><div class="tag mb-1">rolling</div><div style="color:var(--mute)">30-day average → Complete Win Score → daily rank</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== NSR POOLS ===================== -->
+<section id="nsr" class="max-w-7xl mx-auto px-6 py-24">
+  <div class="tag mb-3" style="color:var(--teal)">06 · Node Support Rewards</div>
+  <h2 class="text-4xl md:text-5xl font-bold tracking-tight max-w-3xl">Four pools. The higher you rank, the more you stack.</h2>
+  <p class="mt-4 text-lg max-w-3xl" style="color:var(--mute)">
+    The 30% NSR pool drops into four ranking buckets daily. <span style="color:var(--text)">Each bucket gets 12.5% of NSR.</span>
+    A top-ranked Impact BlockBot qualifies for all four — and earns the largest slice of each.
+  </p>
+
+  <div class="grid lg:grid-cols-12 gap-8 mt-12">
+    <!-- Concentric tiers -->
+    <div class="lg:col-span-6 panel p-8">
+      <svg viewBox="0 0 500 500" class="w-full h-auto">
+        <defs>
+          <radialGradient id="rg1"><stop offset="0" stop-color="#2ee5c2" stop-opacity="0.7"/><stop offset="1" stop-color="#2ee5c2" stop-opacity="0"/></radialGradient>
+        </defs>
+        <!-- outermost: top 50,000 -->
+        <circle cx="250" cy="250" r="230" fill="rgba(255,110,152,0.06)" stroke="#ff6e98" stroke-width="1"/>
+        <text x="250" y="40" text-anchor="middle" font-size="13" font-weight="700" fill="#ff6e98">Top 50,000</text>
+        <text x="250" y="58" text-anchor="middle" font-size="10" fill="#8a93c9">12.5% of NSR</text>
+
+        <circle cx="250" cy="250" r="180" fill="rgba(155,108,255,0.08)" stroke="#9b6cff" stroke-width="1"/>
+        <text x="250" y="92" text-anchor="middle" font-size="13" font-weight="700" fill="#9b6cff">Top 5,000</text>
+        <text x="250" y="110" text-anchor="middle" font-size="10" fill="#8a93c9">12.5% of NSR</text>
+
+        <circle cx="250" cy="250" r="130" fill="rgba(77,140,255,0.10)" stroke="#4d8cff" stroke-width="1.5"/>
+        <text x="250" y="146" text-anchor="middle" font-size="13" font-weight="700" fill="#4d8cff">Top 500</text>
+        <text x="250" y="164" text-anchor="middle" font-size="10" fill="#8a93c9">12.5% of NSR</text>
+
+        <circle cx="250" cy="250" r="80" fill="rgba(46,229,194,0.18)" stroke="#2ee5c2" stroke-width="2"/>
+        <text x="250" y="246" text-anchor="middle" font-size="14" font-weight="800" fill="#2ee5c2">Top 50</text>
+        <text x="250" y="264" text-anchor="middle" font-size="11" fill="#e9ecff">12.5% of NSR</text>
+
+        <!-- pulsing dot at center = you -->
+        <circle cx="250" cy="250" r="7" fill="#fff"/>
+        <circle cx="250" cy="250" r="14" fill="none" stroke="#fff" stroke-opacity="0.4">
+          <animate attributeName="r" values="7;30;7" dur="2.4s" repeatCount="indefinite"/>
+          <animate attributeName="stroke-opacity" values="0.6;0;0.6" dur="2.4s" repeatCount="indefinite"/>
+        </circle>
+      </svg>
+      <div class="text-center text-xs mt-2" style="color:var(--mute)">A rank-25 BlockBot stacks all four pools, with the largest slice of each.</div>
+    </div>
+
+    <div class="lg:col-span-6 space-y-5">
+      <div class="panel p-5">
+        <div class="flex items-center justify-between"><div class="font-semibold">Within each tier — pay is dynamic</div><span class="kbd num">CWS-weighted</span></div>
+        <p class="text-sm mt-2" style="color:var(--mute)">Your slice = your Complete Win Score ÷ sum of all CWS in the tier. Rank 25 in the Top 50 makes <span style="color:var(--text)">substantially more</span> than rank 49 — same pool, very different paychecks.</p>
+      </div>
+
+      <div class="panel p-5">
+        <div class="flex items-center justify-between"><div class="font-semibold">Crossing a threshold = stacking a pool</div><span class="kbd">Top 50K → Top 5K → Top 500 → Top 50</span></div>
+        <p class="text-sm mt-2" style="color:var(--mute)">Each tier you cross adds another 12.5% pool to your daily payout. The income curve is non-linear — the climb pays compounding rewards.</p>
+      </div>
+
+      <div class="panel p-5">
+        <div class="flex items-center justify-between"><div class="font-semibold">It's network-wide, not lineage-only</div><span class="kbd">global</span></div>
+        <p class="text-sm mt-2" style="color:var(--mute)">NSR is sourced from <span style="color:var(--text)">all sales across the network</span> — not just your line. Your rank captures a slice of the entire ecosystem's revenue.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== JOURNEY ===================== -->
+<section id="journey" class="max-w-7xl mx-auto px-6 py-24">
+  <div class="tag mb-3" style="color:var(--blue)">07 · The journey over time</div>
+  <h2 class="text-4xl md:text-5xl font-bold tracking-tight max-w-3xl">Active income today. Passive income forever.</h2>
+  <p class="mt-4 text-lg max-w-3xl" style="color:var(--mute)">
+    Year 1, your income is mostly Block 1 / Block 2 compression from your team.
+    As your team becomes Impact, that compression naturally fades —
+    <span style="color:var(--text)">but your Win Score rises and your NSR slice grows from a much bigger pool.</span>
+  </p>
+
+  <div class="panel p-6 md:p-10 mt-10">
+    <svg viewBox="0 0 900 380" class="w-full h-auto">
+      <defs>
+        <linearGradient id="ja" x1="0" x2="0" y1="0" y2="1"><stop offset="0" stop-color="#4d8cff" stop-opacity="0.6"/><stop offset="1" stop-color="#4d8cff" stop-opacity="0.05"/></linearGradient>
+        <linearGradient id="jb" x1="0" x2="0" y1="0" y2="1"><stop offset="0" stop-color="#2ee5c2" stop-opacity="0.6"/><stop offset="1" stop-color="#2ee5c2" stop-opacity="0.05"/></linearGradient>
+        <linearGradient id="jc" x1="0" x2="1" y1="0" y2="0"><stop offset="0" stop-color="#9b6cff"/><stop offset="1" stop-color="#2ee5c2"/></linearGradient>
+      </defs>
+
+      <!-- axes -->
+      <line x1="60" y1="320" x2="860" y2="320" stroke="#1c2350"/>
+      <line x1="60" y1="40" x2="60" y2="320" stroke="#1c2350"/>
+
+      <!-- x labels -->
+      <text x="160" y="345" text-anchor="middle" font-size="12" fill="#8a93c9">Year 1</text>
+      <text x="380" y="345" text-anchor="middle" font-size="12" fill="#8a93c9">Year 2</text>
+      <text x="600" y="345" text-anchor="middle" font-size="12" fill="#8a93c9">Year 3</text>
+      <text x="820" y="345" text-anchor="middle" font-size="12" fill="#8a93c9">Year 4+</text>
+      <text x="40" y="50" text-anchor="end" font-size="11" fill="#8a93c9">$$$</text>
+      <text x="40" y="320" text-anchor="end" font-size="11" fill="#8a93c9">$0</text>
+
+      <!-- Compression area: high then declining -->
+      <path d="M 60 240 C 200 140 320 130 460 200 C 600 270 720 290 860 300 L 860 320 L 60 320 Z" fill="url(#ja)"/>
+      <path d="M 60 240 C 200 140 320 130 460 200 C 600 270 720 290 860 300" fill="none" stroke="#4d8cff" stroke-width="2"/>
+
+      <!-- NSR area: low then rising -->
+      <path d="M 60 310 C 200 290 320 240 460 170 C 600 100 720 70 860 50 L 860 320 L 60 320 Z" fill="url(#jb)"/>
+      <path d="M 60 310 C 200 290 320 240 460 170 C 600 100 720 70 860 50" fill="none" stroke="#2ee5c2" stroke-width="2"/>
+
+      <!-- crossover marker -->
+      <circle cx="460" cy="185" r="6" fill="#fff"/>
+      <line x1="460" y1="185" x2="460" y2="320" stroke="#1c2350" stroke-dasharray="3 4"/>
+      <text x="475" y="180" font-size="11" fill="#e9ecff">Crossover</text>
+      <text x="475" y="195" font-size="10" fill="#8a93c9">team ranks up</text>
+
+      <!-- legend -->
+      <g transform="translate(620, 50)">
+        <rect width="14" height="14" fill="#4d8cff" rx="3"/>
+        <text x="22" y="12" font-size="12" fill="#e9ecff">Block 1 / Block 2 compression</text>
+        <rect y="22" width="14" height="14" fill="#2ee5c2" rx="3"/>
+        <text x="22" y="34" font-size="12" fill="#e9ecff">NSR ranking pool share</text>
+      </g>
+    </svg>
+
+    <div class="grid md:grid-cols-3 gap-5 mt-8 text-sm">
+      <div class="panel p-5">
+        <div class="tag mb-2">year 1</div>
+        <p style="color:var(--mute)">Most of your income is Block 1 / Block 2 compression. You're a magnet — every non-Impact upline below you funnels to you.</p>
+      </div>
+      <div class="panel p-5">
+        <div class="tag mb-2">year 2 — crossover</div>
+        <p style="color:var(--mute)">Your team starts ranking up. Compression drops. But your Win Score climbs and NSR begins to dominate.</p>
+      </div>
+      <div class="panel p-5">
+        <div class="tag mb-2">year 3+</div>
+        <p style="color:var(--mute)">NSR is most of your income. It's a slice of every dollar across the entire network — passive, recurring, scaling with adoption.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== CLOSE ===================== -->
+<section class="max-w-7xl mx-auto px-6 py-24">
+  <div class="panel p-8 md:p-14">
+    <div class="grid md:grid-cols-2 gap-10 items-start">
+      <div>
+        <div class="tag mb-3" style="color:var(--gold)">tl;dr</div>
+        <h2 class="text-4xl md:text-5xl font-bold tracking-tight leading-[1.05]">
+          Real revenue. <br/>Real buy pressure. <br/><span class="grad-text">Real distribution.</span>
+        </h2>
+      </div>
+      <div class="space-y-5 text-base" style="color:var(--mute)">
+        <p><span style="color:var(--text)" class="font-semibold">Proof of Work</span> rewards machines for solving puzzles.</p>
+        <p><span style="color:var(--text)" class="font-semibold">Proof of Stake</span> rewards people for locking up money.</p>
+        <p><span class="grad-text font-semibold">Proof of Action</span> rewards people for creating real value.</p>
+        <div class="hairline"></div>
+        <p>Buy a BlockBot. Earn 10% on every sale you make and 10% on every sale your team makes — forever.
+        Sell 4 to become Impact, double your direct income, and unlock the daily NSR ranking pools where the lion's share of revenue gets distributed.</p>
+        <p>Spend the WIN you earn on gas, renewals, and products in the ecosystem. The loop closes. The flywheel turns. The network grows.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="text-center mt-12 text-xs" style="color:var(--mute)">
+    Win Blockchain · Proof of Action · Charter v4.0 · explainer v1
+  </div>
+</section>
+
+</body>
+</html>
