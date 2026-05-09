@@ -47,6 +47,12 @@
   details summary::-webkit-details-marker { display:none; }
   details summary { cursor:pointer; }
   .nav-link:hover { color: var(--text); }
+  .brand-mark {
+    width: 44px;
+    height: 36px;
+    object-fit: contain;
+    display: block;
+  }
 </style>
 </head>
 <body class="antialiased">
@@ -54,9 +60,7 @@
 <!-- ===================== TOP NAV ===================== -->
 <header class="max-w-7xl mx-auto px-6 py-6 flex items-center justify-between">
   <div class="flex items-center gap-3">
-    <div class="w-9 h-9 rounded-xl flex items-center justify-center" style="background:#0166ff">
-      <span class="text-[#0a0a0a] font-black text-lg">W</span>
-    </div>
+    <img class="brand-mark" src="blockbot-logo.png" alt="BlockBot" />
     <div>
       <div class="font-bold tracking-tight">Win Blockchain</div>
       <div class="text-xs" style="color:var(--mute)">Proof of Action</div>
