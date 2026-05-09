@@ -54,16 +54,6 @@
     object-fit: contain;
     display: block;
   }
-  .max-w-7xl {
-    max-width: none !important;
-    box-sizing: border-box;
-  }
-  header,
-  section,
-  .hairline.max-w-7xl {
-    padding-left: clamp(16px, 2.5vw, 36px) !important;
-    padding-right: clamp(16px, 2.5vw, 36px) !important;
-  }
   p,
   li {
     line-height: 1.7;
@@ -74,48 +64,43 @@
         radial-gradient(ellipse 520px 360px at 78% -8%, rgba(1,102,255,0.2), transparent 70%),
         var(--ink);
     }
-    header {
-      padding-top: 18px !important;
-      padding-bottom: 18px !important;
-    }
     section {
-      padding-top: 68px !important;
-      padding-bottom: 68px !important;
+      padding-top: 64px !important;
+      padding-bottom: 64px !important;
     }
     section:first-of-type {
-      padding-top: 30px !important;
-      padding-bottom: 74px !important;
+      padding-top: 32px !important;
     }
     h1 {
-      font-size: clamp(2.55rem, 10.6vw, 3.15rem) !important;
+      font-size: clamp(3rem, 12.5vw, 3.55rem) !important;
       line-height: 1 !important;
       letter-spacing: 0 !important;
-      max-width: 100% !important;
-      overflow-wrap: normal;
     }
     h2 {
-      font-size: clamp(2.25rem, 10.5vw, 3rem) !important;
-      line-height: 1.04 !important;
+      font-size: clamp(2.15rem, 9vw, 2.65rem) !important;
+      line-height: 1.06 !important;
       letter-spacing: 0 !important;
     }
+    .access-panel h2 {
+      font-size: clamp(2rem, 8.2vw, 2.4rem) !important;
+    }
     h3 {
-      font-size: 1.55rem !important;
-      line-height: 1.12 !important;
+      font-size: 1.45rem !important;
+      line-height: 1.14 !important;
     }
     p,
     li,
     .text-sm,
     .text-base {
-      font-size: 1rem !important;
+      font-size: 1.0625rem !important;
       line-height: 1.7 !important;
-      max-width: 100% !important;
     }
     .text-xs {
       font-size: 0.9rem !important;
       line-height: 1.5 !important;
     }
     .tag {
-      font-size: 0.78rem;
+      font-size: 0.8rem;
       letter-spacing: 0.14em;
     }
     .chip {
@@ -123,50 +108,8 @@
       align-items: flex-start;
       line-height: 1.45;
     }
-    .brand-mark {
-      width: 50px;
-      height: 41px;
-    }
     .panel:is(.p-5, .p-6, .p-8) {
       padding: 22px !important;
-    }
-    .access-panel {
-      gap: 18px !important;
-    }
-    .grid-cols-3,
-    .grid-cols-10 {
-      grid-template-columns: 1fr !important;
-    }
-    .grid {
-      grid-template-columns: minmax(0, 1fr) !important;
-    }
-    .grid > * {
-      min-width: 0;
-    }
-    .grid-cols-10 {
-      height: auto !important;
-    }
-    .grid-cols-10 > div {
-      grid-column: auto !important;
-      min-height: 52px;
-      justify-content: flex-start !important;
-      text-align: left !important;
-      padding: 12px 14px !important;
-      font-size: 0.95rem !important;
-      line-height: 1.35 !important;
-    }
-    .panel:has(svg) {
-      overflow-x: auto !important;
-      -webkit-overflow-scrolling: touch;
-    }
-    .panel > svg {
-      min-width: 560px;
-    }
-    #nsr .panel > svg {
-      min-width: 430px;
-    }
-    #journey .panel > svg {
-      min-width: 720px;
     }
   }
 </style>
