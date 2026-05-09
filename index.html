@@ -7,34 +7,36 @@
 <script src="https://cdn.tailwindcss.com"></script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400&family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
 <style>
   :root {
-    --ink: #06091a;
-    --ink-2: #0c1130;
-    --line: #1c2350;
-    --text: #e9ecff;
-    --mute: #8a93c9;
-    --teal: #2ee5c2;
-    --blue: #4d8cff;
-    --violet: #9b6cff;
-    --gold: #ffc266;
-    --rose: #ff6e98;
+    --ink: #0a0a0a;
+    --ink-2: #111111;
+    --line: rgba(255,255,255,0.08);
+    --text: #ffffff;
+    --mute: #888888;
+    --soft: #f5f5f5;
+    --blue-light: #3385ff;
+    --teal: #0166ff;
+    --blue: #0166ff;
+    --violet: #3385ff;
+    --gold: #ffffff;
+    --rose: #3385ff;
   }
   html, body { background: var(--ink); color: var(--text); font-family: 'Inter', system-ui, sans-serif; }
   body { background:
-    radial-gradient(ellipse 1200px 600px at 80% -10%, rgba(46,229,194,0.10), transparent 70%),
-    radial-gradient(ellipse 1000px 500px at 0% 30%, rgba(77,140,255,0.10), transparent 70%),
+    radial-gradient(ellipse 900px 520px at 78% -12%, rgba(1,102,255,0.16), transparent 70%),
     var(--ink);
   }
-  .grad-text { background: linear-gradient(90deg, #2ee5c2, #4d8cff 60%, #9b6cff); -webkit-background-clip: text; background-clip: text; color: transparent; }
-  .panel { background: linear-gradient(180deg, rgba(255,255,255,0.025), rgba(255,255,255,0.01)); border: 1px solid var(--line); border-radius: 22px; }
-  .chip { display:inline-flex; align-items:center; gap:8px; padding:6px 12px; border-radius:999px; border:1px solid var(--line); background:rgba(255,255,255,0.02); font-size:12px; color:var(--mute); letter-spacing:0.04em; text-transform:uppercase; font-weight:500; }
+  h1, h2, h3, .font-bold, .font-extrabold, .font-black { font-family: 'Plus Jakarta Sans', 'Inter', system-ui, sans-serif; }
+  .grad-text { color: var(--blue); background: none; -webkit-background-clip: initial; background-clip: initial; }
+  .panel { background: rgba(255,255,255,0.025); border: 1px solid var(--line); border-radius: 16px; }
+  .chip { display:inline-flex; align-items:center; gap:8px; padding:7px 14px; border-radius:999px; border:1px solid rgba(1,102,255,0.3); background:rgba(1,102,255,0.12); font-size:12px; color:var(--text); letter-spacing:0.08em; text-transform:uppercase; font-weight:600; }
   .num { font-feature-settings: "tnum"; font-variant-numeric: tabular-nums; }
-  .hairline { height:1px; background: linear-gradient(90deg, transparent, var(--line), transparent); }
-  .tag { font-size:11px; letter-spacing:0.12em; text-transform:uppercase; color:var(--mute); font-weight:600; }
-  .kbd { padding:2px 8px; border-radius:6px; border:1px solid var(--line); background:#0a0f2a; font-size:12px; color:var(--text); }
-  .glow { box-shadow: 0 0 0 1px rgba(46,229,194,0.18), 0 20px 60px -20px rgba(46,229,194,0.25); }
+  .hairline { height:1px; background: var(--line); }
+  .tag { font-size:11px; letter-spacing:0.18em; text-transform:uppercase; color:var(--blue); font-weight:700; }
+  .kbd { padding:3px 9px; border-radius:100px; border:1px solid rgba(1,102,255,0.35); background:rgba(1,102,255,0.10); font-size:12px; color:var(--text); }
+  .glow { box-shadow: none; background: rgba(1,102,255,0.06); }
   .scrolly { scrollbar-width:thin; }
   .ring-anim { animation: pulse 2.6s ease-in-out infinite; }
   @keyframes pulse { 0%,100%{ opacity:0.4 } 50%{ opacity:1 } }
@@ -52,8 +54,8 @@
 <!-- ===================== TOP NAV ===================== -->
 <header class="max-w-7xl mx-auto px-6 py-6 flex items-center justify-between">
   <div class="flex items-center gap-3">
-    <div class="w-9 h-9 rounded-xl flex items-center justify-center" style="background:linear-gradient(135deg,#2ee5c2,#4d8cff)">
-      <span class="text-[#06091a] font-black text-lg">W</span>
+    <div class="w-9 h-9 rounded-xl flex items-center justify-center" style="background:#0166ff">
+      <span class="text-[#0a0a0a] font-black text-lg">W</span>
     </div>
     <div>
       <div class="font-bold tracking-tight">Win Blockchain</div>
@@ -65,7 +67,8 @@
     <a class="nav-link" href="#dollar">Where the dollar goes</a>
     <a class="nav-link" href="#commissions">Commissions</a>
     <a class="nav-link" href="#impact">Impact rank-up</a>
-    <a class="nav-link" href="#score">Win Score</a>
+    <a class="nav-link" href="#score">Oracle Memory</a>
+    <a class="nav-link" href="#actions">Action Points</a>
     <a class="nav-link" href="#nsr">NSR pools</a>
     <a class="nav-link" href="#journey">The journey</a>
   </nav>
@@ -95,7 +98,7 @@
     <div class="panel p-5">
       <div class="tag">node support pool</div>
       <div class="text-4xl font-extrabold mt-2 num">30%</div>
-      <div class="text-sm mt-1" style="color:var(--mute)">distributed by daily Win Score rank</div>
+      <div class="text-sm mt-1" style="color:var(--mute)">distributed by action-based Win Score rank</div>
     </div>
   </div>
 </section>
@@ -123,50 +126,51 @@
       <div class="panel p-6 md:p-10 relative overflow-hidden">
         <svg viewBox="0 0 600 480" class="w-full h-auto">
           <defs>
-            <linearGradient id="g1" x1="0" x2="1"><stop offset="0" stop-color="#2ee5c2"/><stop offset="1" stop-color="#4d8cff"/></linearGradient>
-            <linearGradient id="g2" x1="0" x2="1"><stop offset="0" stop-color="#4d8cff"/><stop offset="1" stop-color="#9b6cff"/></linearGradient>
-            <linearGradient id="g3" x1="0" x2="1"><stop offset="0" stop-color="#9b6cff"/><stop offset="1" stop-color="#ff6e98"/></linearGradient>
-            <linearGradient id="g4" x1="0" x2="1"><stop offset="0" stop-color="#ff6e98"/><stop offset="1" stop-color="#ffc266"/></linearGradient>
-            <linearGradient id="g5" x1="0" x2="1"><stop offset="0" stop-color="#ffc266"/><stop offset="1" stop-color="#2ee5c2"/></linearGradient>
+            <linearGradient id="g1" x1="0" x2="1"><stop offset="0" stop-color="#0166ff"/><stop offset="1" stop-color="#0166ff"/></linearGradient>
+            <linearGradient id="g2" x1="0" x2="1"><stop offset="0" stop-color="#0166ff"/><stop offset="1" stop-color="#3385ff"/></linearGradient>
+            <linearGradient id="g3" x1="0" x2="1"><stop offset="0" stop-color="#3385ff"/><stop offset="1" stop-color="#3385ff"/></linearGradient>
+            <linearGradient id="g4" x1="0" x2="1"><stop offset="0" stop-color="#3385ff"/><stop offset="1" stop-color="#ffffff"/></linearGradient>
+            <linearGradient id="g5" x1="0" x2="1"><stop offset="0" stop-color="#ffffff"/><stop offset="1" stop-color="#0166ff"/></linearGradient>
             <filter id="soft" x="-50%" y="-50%" width="200%" height="200%"><feGaussianBlur stdDeviation="14"/></filter>
           </defs>
 
           <!-- Center -->
           <circle cx="300" cy="240" r="60" fill="url(#g1)" opacity="0.2"/>
-          <circle cx="300" cy="240" r="44" fill="#0c1130" stroke="url(#g1)" stroke-width="2"/>
-          <text x="300" y="232" text-anchor="middle" font-size="13" font-weight="700" fill="#e9ecff">SmartFlow</text>
-          <text x="300" y="252" text-anchor="middle" font-size="10" fill="#8a93c9">buy &amp; distribute</text>
+          <circle cx="300" cy="240" r="44" fill="#111111" stroke="url(#g1)" stroke-width="2"/>
+          <text x="300" y="232" text-anchor="middle" font-size="13" font-weight="700" fill="#ffffff">SmartFlow</text>
+          <text x="300" y="252" text-anchor="middle" font-size="10" fill="#888888">buy &amp; distribute</text>
 
           <!-- 5 nodes around center -->
           <!-- Node 1: Customer pays -->
           <g>
-            <circle cx="300" cy="60" r="38" fill="#0c1130" stroke="#2ee5c2" stroke-width="1.5"/>
-            <text x="300" y="56" text-anchor="middle" font-size="11" font-weight="600" fill="#e9ecff">Customer</text>
-            <text x="300" y="72" text-anchor="middle" font-size="11" font-weight="600" fill="#e9ecff">pays $</text>
+            <circle cx="300" cy="60" r="38" fill="#111111" stroke="#0166ff" stroke-width="1.5"/>
+            <text x="300" y="56" text-anchor="middle" font-size="11" font-weight="600" fill="#ffffff">Customer</text>
+            <text x="300" y="72" text-anchor="middle" font-size="11" font-weight="600" fill="#ffffff">pays $</text>
           </g>
           <!-- Node 2: Buys WIN -->
           <g>
-            <circle cx="500" cy="170" r="38" fill="#0c1130" stroke="#4d8cff" stroke-width="1.5"/>
-            <text x="500" y="166" text-anchor="middle" font-size="11" font-weight="600" fill="#e9ecff">Market buy</text>
-            <text x="500" y="182" text-anchor="middle" font-size="11" font-weight="600" fill="#e9ecff">of WIN</text>
+            <circle cx="500" cy="170" r="38" fill="#111111" stroke="#0166ff" stroke-width="1.5"/>
+            <text x="500" y="166" text-anchor="middle" font-size="11" font-weight="600" fill="#ffffff">Market buy</text>
+            <text x="500" y="182" text-anchor="middle" font-size="11" font-weight="600" fill="#ffffff">of WIN</text>
           </g>
           <!-- Node 3: 70% to humans -->
           <g>
-            <circle cx="450" cy="380" r="38" fill="#0c1130" stroke="#9b6cff" stroke-width="1.5"/>
-            <text x="450" y="376" text-anchor="middle" font-size="11" font-weight="600" fill="#e9ecff">70% paid</text>
-            <text x="450" y="392" text-anchor="middle" font-size="11" font-weight="600" fill="#e9ecff">to humans</text>
+            <circle cx="450" cy="380" r="38" fill="#111111" stroke="#3385ff" stroke-width="1.5"/>
+            <text x="450" y="376" text-anchor="middle" font-size="11" font-weight="600" fill="#ffffff">70% paid</text>
+            <text x="450" y="392" text-anchor="middle" font-size="11" font-weight="600" fill="#ffffff">to humans</text>
           </g>
           <!-- Node 4: WIN spent -->
           <g>
-            <circle cx="150" cy="380" r="38" fill="#0c1130" stroke="#ff6e98" stroke-width="1.5"/>
-            <text x="150" y="376" text-anchor="middle" font-size="11" font-weight="600" fill="#e9ecff">Spent on gas,</text>
-            <text x="150" y="392" text-anchor="middle" font-size="11" font-weight="600" fill="#e9ecff">renewals, cart</text>
+            <circle cx="150" cy="380" r="44" fill="#111111" stroke="#3385ff" stroke-width="1.5"/>
+            <text x="150" y="372" text-anchor="middle" font-size="10" font-weight="600" fill="#ffffff">Spent on</text>
+            <text x="150" y="386" text-anchor="middle" font-size="10" font-weight="600" fill="#ffffff">gas, renewals</text>
+            <text x="150" y="400" text-anchor="middle" font-size="10" font-weight="600" fill="#ffffff">and cart</text>
           </g>
           <!-- Node 5: 30% to ops -->
           <g>
-            <circle cx="100" cy="170" r="38" fill="#0c1130" stroke="#ffc266" stroke-width="1.5"/>
-            <text x="100" y="166" text-anchor="middle" font-size="11" font-weight="600" fill="#e9ecff">30% to ops</text>
-            <text x="100" y="182" text-anchor="middle" font-size="11" font-weight="600" fill="#e9ecff">+ Battery</text>
+            <circle cx="100" cy="170" r="38" fill="#111111" stroke="#ffffff" stroke-width="1.5"/>
+            <text x="100" y="166" text-anchor="middle" font-size="11" font-weight="600" fill="#ffffff">30% to ops</text>
+            <text x="100" y="182" text-anchor="middle" font-size="11" font-weight="600" fill="#ffffff">+ Battery</text>
           </g>
 
           <!-- Connecting flow arcs -->
@@ -196,12 +200,12 @@
   <div class="panel p-6 md:p-10 mt-10">
     <!-- Stacked bar -->
     <div class="grid grid-cols-10 gap-1.5 h-20 rounded-xl overflow-hidden">
-      <div class="col-span-3 flex items-center justify-center text-xs font-semibold" style="background:linear-gradient(135deg,#ffc266,#ff8a3a); color:#06091a">30% Ops</div>
-      <div class="col-span-1 flex items-center justify-center text-xs font-semibold text-center px-1" style="background:linear-gradient(135deg,#2ee5c2,#34c8a8); color:#06091a">10% Tx</div>
-      <div class="col-span-1 flex items-center justify-center text-xs font-semibold text-center px-1" style="background:linear-gradient(135deg,#34c8a8,#3aa9d6); color:#06091a">10% Confirm</div>
-      <div class="col-span-1 flex items-center justify-center text-xs font-semibold text-center px-1" style="background:linear-gradient(135deg,#4d8cff,#6f7eff); color:#06091a">10% Block 1</div>
-      <div class="col-span-1 flex items-center justify-center text-xs font-semibold text-center px-1" style="background:linear-gradient(135deg,#9b6cff,#b65fe6); color:#06091a">10% Block 2</div>
-      <div class="col-span-3 flex items-center justify-center text-xs font-semibold" style="background:linear-gradient(135deg,#ff6e98,#ff4f80); color:#06091a">30% NSR (rank pools)</div>
+      <div class="col-span-3 flex items-center justify-center text-xs font-semibold" style="background:#ffffff; color:#0a0a0a">30% Ops</div>
+      <div class="col-span-1 flex items-center justify-center text-xs font-semibold text-center px-1" style="background:#0166ff; color:#0a0a0a">10% Tx</div>
+      <div class="col-span-1 flex items-center justify-center text-xs font-semibold text-center px-1" style="background:#3385ff; color:#0a0a0a">10% Confirm</div>
+      <div class="col-span-1 flex items-center justify-center text-xs font-semibold text-center px-1" style="background:#0166ff; color:#0a0a0a">10% Block 1</div>
+      <div class="col-span-1 flex items-center justify-center text-xs font-semibold text-center px-1" style="background:#3385ff; color:#0a0a0a">10% Block 2</div>
+      <div class="col-span-3 flex items-center justify-center text-xs font-semibold" style="background:#3385ff; color:#0a0a0a">30% NSR (rank pools)</div>
     </div>
     <div class="grid grid-cols-10 gap-1.5 mt-3 text-xs" style="color:var(--mute)">
       <div class="col-span-3">SmartFlow → Hosting, legal, dev, brand, community</div>
@@ -209,7 +213,7 @@
       <div class="col-span-1 text-center">to seller's sponsor</div>
       <div class="col-span-1 text-center">to 1st Impact upline</div>
       <div class="col-span-1 text-center">to 2nd Impact upline</div>
-      <div class="col-span-3 text-center">Top 50 / 500 / 5K / 50K — by Win Score</div>
+      <div class="col-span-3 text-center">Top 50 / 500 / 5K / 50K — by action-based Win Score</div>
     </div>
 
     <div class="hairline my-8"></div>
@@ -239,58 +243,58 @@
       <svg viewBox="0 0 700 540" class="w-full h-auto">
         <defs>
           <linearGradient id="lg1" x1="0" x2="0" y1="0" y2="1">
-            <stop offset="0" stop-color="#2ee5c2"/><stop offset="1" stop-color="#4d8cff"/>
+            <stop offset="0" stop-color="#0166ff"/><stop offset="1" stop-color="#0166ff"/>
           </linearGradient>
         </defs>
 
         <!-- chain rungs (top to bottom = upline to downline) -->
         <!-- Top: 2nd Impact upline -->
         <g>
-          <rect x="200" y="20" width="300" height="60" rx="14" fill="#0c1130" stroke="#9b6cff" stroke-width="1.5"/>
-          <text x="350" y="46" text-anchor="middle" font-size="13" font-weight="700" fill="#e9ecff">2nd Impact BlockBot in lineage</text>
-          <text x="350" y="64" text-anchor="middle" font-size="11" fill="#9b6cff">receives Block 2 · 10%</text>
+          <rect x="200" y="20" width="300" height="60" rx="14" fill="#111111" stroke="#3385ff" stroke-width="1.5"/>
+          <text x="350" y="46" text-anchor="middle" font-size="13" font-weight="700" fill="#ffffff">2nd Impact BlockBot in lineage</text>
+          <text x="350" y="64" text-anchor="middle" font-size="11" fill="#3385ff">receives Block 2 · 10%</text>
         </g>
         <!-- middle (non-Impact relay) -->
         <g opacity="0.55">
-          <rect x="240" y="110" width="220" height="44" rx="10" fill="#0c1130" stroke="#1c2350"/>
-          <text x="350" y="138" text-anchor="middle" font-size="11" fill="#8a93c9">non-Impact upline · skipped</text>
+          <rect x="240" y="110" width="220" height="44" rx="10" fill="#111111" stroke="#2a2a2a"/>
+          <text x="350" y="138" text-anchor="middle" font-size="11" fill="#888888">non-Impact upline · skipped</text>
         </g>
         <!-- 1st Impact upline -->
         <g>
-          <rect x="200" y="180" width="300" height="60" rx="14" fill="#0c1130" stroke="#4d8cff" stroke-width="1.5"/>
-          <text x="350" y="206" text-anchor="middle" font-size="13" font-weight="700" fill="#e9ecff">1st Impact BlockBot in lineage</text>
-          <text x="350" y="224" text-anchor="middle" font-size="11" fill="#4d8cff">receives Block 1 · 10%</text>
+          <rect x="200" y="180" width="300" height="60" rx="14" fill="#111111" stroke="#0166ff" stroke-width="1.5"/>
+          <text x="350" y="206" text-anchor="middle" font-size="13" font-weight="700" fill="#ffffff">1st Impact BlockBot in lineage</text>
+          <text x="350" y="224" text-anchor="middle" font-size="11" fill="#0166ff">receives Block 1 · 10%</text>
         </g>
         <!-- non-Impact relay -->
         <g opacity="0.55">
-          <rect x="240" y="270" width="220" height="44" rx="10" fill="#0c1130" stroke="#1c2350"/>
-          <text x="350" y="298" text-anchor="middle" font-size="11" fill="#8a93c9">non-Impact upline · skipped</text>
+          <rect x="240" y="270" width="220" height="44" rx="10" fill="#111111" stroke="#2a2a2a"/>
+          <text x="350" y="298" text-anchor="middle" font-size="11" fill="#888888">non-Impact upline · skipped</text>
         </g>
         <!-- Sponsor of seller -->
         <g>
-          <rect x="200" y="340" width="300" height="60" rx="14" fill="#0c1130" stroke="#2ee5c2" stroke-width="1.5"/>
-          <text x="350" y="366" text-anchor="middle" font-size="13" font-weight="700" fill="#e9ecff">Seller's direct sponsor</text>
-          <text x="350" y="384" text-anchor="middle" font-size="11" fill="#2ee5c2">receives Confirmation · 10%</text>
+          <rect x="200" y="340" width="300" height="60" rx="14" fill="#111111" stroke="#0166ff" stroke-width="1.5"/>
+          <text x="350" y="366" text-anchor="middle" font-size="13" font-weight="700" fill="#ffffff">Seller's direct sponsor</text>
+          <text x="350" y="384" text-anchor="middle" font-size="11" fill="#0166ff">receives Confirmation · 10%</text>
         </g>
         <!-- Seller -->
         <g>
-          <rect x="200" y="430" width="300" height="60" rx="14" fill="#0c1130" stroke="#ffc266" stroke-width="1.5"/>
-          <text x="350" y="456" text-anchor="middle" font-size="13" font-weight="700" fill="#e9ecff">Seller (the one who made the sale)</text>
-          <text x="350" y="474" text-anchor="middle" font-size="11" fill="#ffc266">receives Transaction · 10%</text>
+          <rect x="200" y="430" width="300" height="60" rx="14" fill="#111111" stroke="#ffffff" stroke-width="1.5"/>
+          <text x="350" y="456" text-anchor="middle" font-size="13" font-weight="700" fill="#ffffff">Seller (the one who made the sale)</text>
+          <text x="350" y="474" text-anchor="middle" font-size="11" fill="#ffffff">receives Transaction · 10%</text>
         </g>
 
         <!-- Compression arrows on left for Block1 / Block2 -->
         <g stroke-dasharray="4 4" fill="none">
           <!-- Block 1 path: from seller, skip middle, to 1st Impact -->
-          <path d="M 200 460 C 80 460 80 210 200 210" stroke="#4d8cff" stroke-width="2"/>
-          <text x="60" y="340" text-anchor="middle" font-size="11" font-weight="700" fill="#4d8cff" transform="rotate(-90 60 340)">Block 1 compresses up</text>
+          <path d="M 200 460 C 80 460 80 210 200 210" stroke="#0166ff" stroke-width="2"/>
+          <text x="60" y="340" text-anchor="middle" font-size="11" font-weight="700" fill="#0166ff" transform="rotate(-90 60 340)">Block 1 compresses up</text>
           <!-- Block 2 path: from seller all the way up to 2nd impact -->
-          <path d="M 500 460 C 640 460 640 50 500 50" stroke="#9b6cff" stroke-width="2"/>
-          <text x="660" y="270" text-anchor="middle" font-size="11" font-weight="700" fill="#9b6cff" transform="rotate(90 660 270)">Block 2 compresses higher</text>
+          <path d="M 500 460 C 640 460 640 50 500 50" stroke="#3385ff" stroke-width="2"/>
+          <text x="660" y="270" text-anchor="middle" font-size="11" font-weight="700" fill="#3385ff" transform="rotate(90 660 270)">Block 2 compresses higher</text>
         </g>
 
         <!-- straight downline links between adjacent rungs -->
-        <g stroke="#1c2350" stroke-width="1">
+        <g stroke="#2a2a2a" stroke-width="1">
           <line x1="350" y1="80" x2="350" y2="110"/>
           <line x1="350" y1="154" x2="350" y2="180"/>
           <line x1="350" y1="240" x2="350" y2="270"/>
@@ -302,19 +306,19 @@
 
     <div class="lg:col-span-5 space-y-5">
       <div class="panel p-5">
-        <div class="flex items-center gap-3"><span class="w-2.5 h-2.5 rounded-full" style="background:#ffc266"></span><div class="font-semibold">Transaction · 10%</div></div>
+        <div class="flex items-center gap-3"><span class="w-2.5 h-2.5 rounded-full" style="background:#ffffff"></span><div class="font-semibold">Transaction · 10%</div></div>
         <p class="text-sm mt-2" style="color:var(--mute)">Always paid to the seller — the person who made the sale. Requires owning a BlockBot.</p>
       </div>
       <div class="panel p-5">
-        <div class="flex items-center gap-3"><span class="w-2.5 h-2.5 rounded-full" style="background:#2ee5c2"></span><div class="font-semibold">Confirmation · 10%</div></div>
+        <div class="flex items-center gap-3"><span class="w-2.5 h-2.5 rounded-full" style="background:#0166ff"></span><div class="font-semibold">Confirmation · 10%</div></div>
         <p class="text-sm mt-2" style="color:var(--mute)">Always paid to the seller's direct sponsor. The person who brought the seller into the network earns on every sale that seller makes.</p>
       </div>
       <div class="panel p-5">
-        <div class="flex items-center gap-3"><span class="w-2.5 h-2.5 rounded-full" style="background:#4d8cff"></span><div class="font-semibold">Block 1 · 10%</div></div>
+        <div class="flex items-center gap-3"><span class="w-2.5 h-2.5 rounded-full" style="background:#0166ff"></span><div class="font-semibold">Block 1 · 10%</div></div>
         <p class="text-sm mt-2" style="color:var(--mute)">Compresses up the lineage to the <span style="color:var(--text)">first qualified Impact BlockBot</span>. If the seller is Impact, it stacks on top of their Transaction — making their direct sale a 20% payout.</p>
       </div>
       <div class="panel p-5">
-        <div class="flex items-center gap-3"><span class="w-2.5 h-2.5 rounded-full" style="background:#9b6cff"></span><div class="font-semibold">Block 2 · 10%</div></div>
+        <div class="flex items-center gap-3"><span class="w-2.5 h-2.5 rounded-full" style="background:#3385ff"></span><div class="font-semibold">Block 2 · 10%</div></div>
         <p class="text-sm mt-2" style="color:var(--mute)">Keeps compressing past Block 1 to find the <span style="color:var(--text)">next qualified Impact BlockBot</span> above. Ranking up early makes you a magnet for compression from your entire downline tree.</p>
       </div>
     </div>
@@ -348,7 +352,7 @@
     </div>
 
     <!-- Post-Impact -->
-    <div class="panel p-6 md:p-8 glow" style="border-color:rgba(46,229,194,0.4)">
+    <div class="panel p-6 md:p-8 glow" style="border-color:rgba(1,102,255,0.4)">
       <div class="tag" style="color:var(--teal)">Impact BlockBot · sold 4</div>
       <div class="mt-4 flex items-baseline gap-2">
         <div class="text-6xl font-black">20<span class="grad-text">%</span></div>
@@ -363,7 +367,7 @@
         <li><span style="color:var(--teal)">★</span> Transaction + Block 1 stack on your sales</li>
         <li><span style="color:var(--teal)">★</span> Confirmation + Block 2 stack on team sales</li>
         <li><span style="color:var(--teal)">★</span> Compression rewards from your whole downline tree</li>
-        <li><span style="color:var(--teal)">★</span> Access to the NSR ranking pools — daily payout by Win Score</li>
+        <li><span style="color:var(--teal)">★</span> Access to the NSR ranking pools — daily payout by action-based Win Score</li>
       </ul>
     </div>
   </div>
@@ -379,13 +383,13 @@
 <section id="score" class="max-w-7xl mx-auto px-6 py-24">
   <div class="grid lg:grid-cols-12 gap-10 items-center">
     <div class="lg:col-span-5">
-      <div class="tag mb-3" style="color:var(--rose)">05 · The Win Score</div>
+      <div class="tag mb-3" style="color:var(--rose)">05 · Oracle Memory</div>
       <h2 class="text-4xl md:text-5xl font-bold tracking-tight">Today matters most. Yesterday still counts.</h2>
       <p class="mt-5 text-lg" style="color:var(--mute)">
-        Win Score is the daily 0–100 metric that determines your rank. It blends five time windows — so you can't coast on past wins, but your history isn't erased the moment you take a day off.
+        Oracle Memory is how the network remembers your work. It turns Action Points into a daily 0-100 Win Score. You cannot coast on old wins, but your history is not erased the moment you take a day off.
       </p>
       <p class="mt-4 text-sm" style="color:var(--mute)">
-        Daily Win Score gets averaged into a 30-day <span style="color:var(--text)">Complete Win Score</span> that determines your rank in the NSR ranking pools.
+        Daily Win Score gets averaged into a 30-day <span style="color:var(--text)">Complete Win Score</span>. That score determines your rank in the NSR ranking pools.
       </p>
     </div>
 
@@ -395,30 +399,30 @@
         <div class="space-y-4">
           <div>
             <div class="flex justify-between text-sm mb-1.5"><span class="font-semibold">Today</span><span class="num" style="color:var(--mute)">50%</span></div>
-            <div class="h-3 rounded-full overflow-hidden" style="background:#0a0f2a"><div class="h-full" style="width:100%;background:linear-gradient(90deg,#2ee5c2,#4d8cff)"></div></div>
+            <div class="h-3 rounded-full overflow-hidden" style="background:#151515"><div class="h-full" style="width:100%;background:#0166ff"></div></div>
           </div>
           <div>
             <div class="flex justify-between text-sm mb-1.5"><span class="font-semibold">Past 7 days</span><span class="num" style="color:var(--mute)">20%</span></div>
-            <div class="h-3 rounded-full overflow-hidden" style="background:#0a0f2a"><div class="h-full" style="width:40%;background:linear-gradient(90deg,#4d8cff,#6f7eff)"></div></div>
+            <div class="h-3 rounded-full overflow-hidden" style="background:#151515"><div class="h-full" style="width:40%;background:#0166ff"></div></div>
           </div>
           <div>
             <div class="flex justify-between text-sm mb-1.5"><span class="font-semibold">Past 30 days</span><span class="num" style="color:var(--mute)">15%</span></div>
-            <div class="h-3 rounded-full overflow-hidden" style="background:#0a0f2a"><div class="h-full" style="width:30%;background:linear-gradient(90deg,#6f7eff,#9b6cff)"></div></div>
+            <div class="h-3 rounded-full overflow-hidden" style="background:#151515"><div class="h-full" style="width:30%;background:#3385ff"></div></div>
           </div>
           <div>
             <div class="flex justify-between text-sm mb-1.5"><span class="font-semibold">Past 365 days</span><span class="num" style="color:var(--mute)">10%</span></div>
-            <div class="h-3 rounded-full overflow-hidden" style="background:#0a0f2a"><div class="h-full" style="width:20%;background:linear-gradient(90deg,#9b6cff,#ff6e98)"></div></div>
+            <div class="h-3 rounded-full overflow-hidden" style="background:#151515"><div class="h-full" style="width:20%;background:#3385ff"></div></div>
           </div>
           <div>
             <div class="flex justify-between text-sm mb-1.5"><span class="font-semibold">All-time</span><span class="num" style="color:var(--mute)">5%</span></div>
-            <div class="h-3 rounded-full overflow-hidden" style="background:#0a0f2a"><div class="h-full" style="width:10%;background:linear-gradient(90deg,#ff6e98,#ffc266)"></div></div>
+            <div class="h-3 rounded-full overflow-hidden" style="background:#151515"><div class="h-full" style="width:10%;background:#3385ff"></div></div>
           </div>
         </div>
 
         <div class="hairline my-7"></div>
 
         <div class="grid grid-cols-3 gap-4 text-xs">
-          <div><div class="tag mb-1">point sources</div><div style="color:var(--mute)">Direct rewards · Node uptime · Referrals · Team activity · Giving</div></div>
+          <div><div class="tag mb-1">Action Points</div><div style="color:var(--mute)">Sales · Node uptime · Referrals · Team help · Giving</div></div>
           <div><div class="tag mb-1">multiplier</div><div style="color:var(--mute)">100% minus % of BlockBots ranked above you in each window</div></div>
           <div><div class="tag mb-1">rolling</div><div style="color:var(--mute)">30-day average → Complete Win Score → daily rank</div></div>
         </div>
@@ -427,13 +431,68 @@
   </div>
 </section>
 
+<!-- ===================== ACTION POINTS ===================== -->
+<section id="actions" class="max-w-7xl mx-auto px-6 py-24">
+  <div class="tag mb-3" style="color:var(--blue)">06 · Action Points</div>
+  <h2 class="text-4xl md:text-5xl font-bold tracking-tight max-w-3xl">The work still counts, even when commissions compress past you.</h2>
+  <p class="mt-4 text-lg max-w-3xl" style="color:var(--mute)">
+    As your team ranks up, you may stop receiving some Block 1 and Block 2 commissions from those legs.
+    That does not mean the work disappears. <span style="color:var(--text)">It moves into the score layer.</span>
+  </p>
+
+  <div class="grid lg:grid-cols-3 gap-6 mt-10">
+    <div class="panel p-6">
+      <div class="tag mb-3">do the action</div>
+      <h3 class="text-2xl font-bold tracking-tight">Action Points are earned.</h3>
+      <p class="mt-3 text-sm leading-6" style="color:var(--mute)">
+        Sales, onboarding, node support, product education, referrals, and team activity create points. The system rewards movement, not sitting still.
+      </p>
+    </div>
+    <div class="panel p-6">
+      <div class="tag mb-3">help the action</div>
+      <h3 class="text-2xl font-bold tracking-tight">Helping others raises the ceiling.</h3>
+      <p class="mt-3 text-sm leading-6" style="color:var(--mute)">
+        When you help someone else take action, their growth can reduce compression later. But it also strengthens your Win Score pathway and the total NSR pool.
+      </p>
+    </div>
+    <div class="panel p-6 glow" style="border-color:rgba(1,102,255,0.45)">
+      <div class="tag mb-3">win the rank</div>
+      <h3 class="text-2xl font-bold tracking-tight">The game shifts to score.</h3>
+      <p class="mt-3 text-sm leading-6" style="color:var(--mute)">
+        At the crossover point, the best move is to increase your Win Score and help others increase theirs. Node Support Rewards are where that action comes back around.
+      </p>
+    </div>
+  </div>
+
+  <div class="panel p-6 md:p-8 mt-6">
+    <div class="grid md:grid-cols-4 gap-5 text-sm">
+      <div>
+        <div class="tag mb-2">commission phase</div>
+        <p style="color:var(--mute)">Block 1 and Block 2 can pay you while your team is still ranking up.</p>
+      </div>
+      <div>
+        <div class="tag mb-2">crossover</div>
+        <p style="color:var(--mute)">As leaders become Impact, some commissions compress to the next qualified person.</p>
+      </div>
+      <div>
+        <div class="tag mb-2">score phase</div>
+        <p style="color:var(--mute)">Your actions and your team's actions feed Oracle Memory and raise Complete Win Score.</p>
+      </div>
+      <div>
+        <div class="tag mb-2">NSR phase</div>
+        <p style="color:var(--mute)">A stronger score can earn from larger daily pools across the whole network.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- ===================== NSR POOLS ===================== -->
 <section id="nsr" class="max-w-7xl mx-auto px-6 py-24">
-  <div class="tag mb-3" style="color:var(--teal)">06 · Node Support Rewards</div>
+  <div class="tag mb-3" style="color:var(--teal)">07 · Node Support Rewards</div>
   <h2 class="text-4xl md:text-5xl font-bold tracking-tight max-w-3xl">Four pools. The higher you rank, the more you stack.</h2>
   <p class="mt-4 text-lg max-w-3xl" style="color:var(--mute)">
     The 30% NSR pool drops into four ranking buckets daily. <span style="color:var(--text)">Each bucket gets 12.5% of NSR.</span>
-    A top-ranked Impact BlockBot qualifies for all four — and earns the largest slice of each.
+    A top-ranked Impact BlockBot qualifies for all four. The rank comes from action, score, and support.
   </p>
 
   <div class="grid lg:grid-cols-12 gap-8 mt-12">
@@ -441,24 +500,24 @@
     <div class="lg:col-span-6 panel p-8">
       <svg viewBox="0 0 500 500" class="w-full h-auto">
         <defs>
-          <radialGradient id="rg1"><stop offset="0" stop-color="#2ee5c2" stop-opacity="0.7"/><stop offset="1" stop-color="#2ee5c2" stop-opacity="0"/></radialGradient>
+          <radialGradient id="rg1"><stop offset="0" stop-color="#0166ff" stop-opacity="0.7"/><stop offset="1" stop-color="#0166ff" stop-opacity="0"/></radialGradient>
         </defs>
         <!-- outermost: top 50,000 -->
-        <circle cx="250" cy="250" r="230" fill="rgba(255,110,152,0.06)" stroke="#ff6e98" stroke-width="1"/>
-        <text x="250" y="40" text-anchor="middle" font-size="13" font-weight="700" fill="#ff6e98">Top 50,000</text>
-        <text x="250" y="58" text-anchor="middle" font-size="10" fill="#8a93c9">12.5% of NSR</text>
+        <circle cx="250" cy="250" r="230" fill="rgba(51,133,255,0.06)" stroke="#3385ff" stroke-width="1"/>
+        <text x="250" y="40" text-anchor="middle" font-size="13" font-weight="700" fill="#3385ff">Top 50,000</text>
+        <text x="250" y="58" text-anchor="middle" font-size="10" fill="#888888">12.5% of NSR</text>
 
-        <circle cx="250" cy="250" r="180" fill="rgba(155,108,255,0.08)" stroke="#9b6cff" stroke-width="1"/>
-        <text x="250" y="92" text-anchor="middle" font-size="13" font-weight="700" fill="#9b6cff">Top 5,000</text>
-        <text x="250" y="110" text-anchor="middle" font-size="10" fill="#8a93c9">12.5% of NSR</text>
+        <circle cx="250" cy="250" r="180" fill="rgba(51,133,255,0.08)" stroke="#3385ff" stroke-width="1"/>
+        <text x="250" y="92" text-anchor="middle" font-size="13" font-weight="700" fill="#3385ff">Top 5,000</text>
+        <text x="250" y="110" text-anchor="middle" font-size="10" fill="#888888">12.5% of NSR</text>
 
-        <circle cx="250" cy="250" r="130" fill="rgba(77,140,255,0.10)" stroke="#4d8cff" stroke-width="1.5"/>
-        <text x="250" y="146" text-anchor="middle" font-size="13" font-weight="700" fill="#4d8cff">Top 500</text>
-        <text x="250" y="164" text-anchor="middle" font-size="10" fill="#8a93c9">12.5% of NSR</text>
+        <circle cx="250" cy="250" r="130" fill="rgba(1,102,255,0.10)" stroke="#0166ff" stroke-width="1.5"/>
+        <text x="250" y="146" text-anchor="middle" font-size="13" font-weight="700" fill="#0166ff">Top 500</text>
+        <text x="250" y="164" text-anchor="middle" font-size="10" fill="#888888">12.5% of NSR</text>
 
-        <circle cx="250" cy="250" r="80" fill="rgba(46,229,194,0.18)" stroke="#2ee5c2" stroke-width="2"/>
-        <text x="250" y="246" text-anchor="middle" font-size="14" font-weight="800" fill="#2ee5c2">Top 50</text>
-        <text x="250" y="264" text-anchor="middle" font-size="11" fill="#e9ecff">12.5% of NSR</text>
+        <circle cx="250" cy="250" r="80" fill="rgba(1,102,255,0.18)" stroke="#0166ff" stroke-width="2"/>
+        <text x="250" y="246" text-anchor="middle" font-size="14" font-weight="800" fill="#0166ff">Top 50</text>
+        <text x="250" y="264" text-anchor="middle" font-size="11" fill="#ffffff">12.5% of NSR</text>
 
         <!-- pulsing dot at center = you -->
         <circle cx="250" cy="250" r="7" fill="#fff"/>
@@ -478,12 +537,12 @@
 
       <div class="panel p-5">
         <div class="flex items-center justify-between"><div class="font-semibold">Crossing a threshold = stacking a pool</div><span class="kbd">Top 50K → Top 5K → Top 500 → Top 50</span></div>
-        <p class="text-sm mt-2" style="color:var(--mute)">Each tier you cross adds another 12.5% pool to your daily payout. The income curve is non-linear — the climb pays compounding rewards.</p>
+        <p class="text-sm mt-2" style="color:var(--mute)">Each tier you cross adds another 12.5% pool to your daily payout. The reward curve is non-linear because action, score, and rank reinforce each other.</p>
       </div>
 
       <div class="panel p-5">
         <div class="flex items-center justify-between"><div class="font-semibold">It's network-wide, not lineage-only</div><span class="kbd">global</span></div>
-        <p class="text-sm mt-2" style="color:var(--mute)">NSR is sourced from <span style="color:var(--text)">all sales across the network</span> — not just your line. Your rank captures a slice of the entire ecosystem's revenue.</p>
+        <p class="text-sm mt-2" style="color:var(--mute)">NSR is sourced from <span style="color:var(--text)">all sales across the network</span> — not just your line. Your action-based rank captures a slice of the entire ecosystem's revenue.</p>
       </div>
     </div>
   </div>
@@ -491,54 +550,54 @@
 
 <!-- ===================== JOURNEY ===================== -->
 <section id="journey" class="max-w-7xl mx-auto px-6 py-24">
-  <div class="tag mb-3" style="color:var(--blue)">07 · The journey over time</div>
-  <h2 class="text-4xl md:text-5xl font-bold tracking-tight max-w-3xl">Active income today. Passive income forever.</h2>
+  <div class="tag mb-3" style="color:var(--blue)">08 · The journey over time</div>
+  <h2 class="text-4xl md:text-5xl font-bold tracking-tight max-w-3xl">Action rewards today. Score rewards as you grow.</h2>
   <p class="mt-4 text-lg max-w-3xl" style="color:var(--mute)">
     Year 1, your income is mostly Block 1 / Block 2 compression from your team.
     As your team becomes Impact, that compression naturally fades —
-    <span style="color:var(--text)">but your Win Score rises and your NSR slice grows from a much bigger pool.</span>
+    <span style="color:var(--text)">but the action that built the team can come back through Win Score and NSR.</span>
   </p>
 
   <div class="panel p-6 md:p-10 mt-10">
     <svg viewBox="0 0 900 380" class="w-full h-auto">
       <defs>
-        <linearGradient id="ja" x1="0" x2="0" y1="0" y2="1"><stop offset="0" stop-color="#4d8cff" stop-opacity="0.6"/><stop offset="1" stop-color="#4d8cff" stop-opacity="0.05"/></linearGradient>
-        <linearGradient id="jb" x1="0" x2="0" y1="0" y2="1"><stop offset="0" stop-color="#2ee5c2" stop-opacity="0.6"/><stop offset="1" stop-color="#2ee5c2" stop-opacity="0.05"/></linearGradient>
-        <linearGradient id="jc" x1="0" x2="1" y1="0" y2="0"><stop offset="0" stop-color="#9b6cff"/><stop offset="1" stop-color="#2ee5c2"/></linearGradient>
+        <linearGradient id="ja" x1="0" x2="0" y1="0" y2="1"><stop offset="0" stop-color="#0166ff" stop-opacity="0.6"/><stop offset="1" stop-color="#0166ff" stop-opacity="0.05"/></linearGradient>
+        <linearGradient id="jb" x1="0" x2="0" y1="0" y2="1"><stop offset="0" stop-color="#0166ff" stop-opacity="0.6"/><stop offset="1" stop-color="#0166ff" stop-opacity="0.05"/></linearGradient>
+        <linearGradient id="jc" x1="0" x2="1" y1="0" y2="0"><stop offset="0" stop-color="#3385ff"/><stop offset="1" stop-color="#0166ff"/></linearGradient>
       </defs>
 
       <!-- axes -->
-      <line x1="60" y1="320" x2="860" y2="320" stroke="#1c2350"/>
-      <line x1="60" y1="40" x2="60" y2="320" stroke="#1c2350"/>
+      <line x1="60" y1="320" x2="860" y2="320" stroke="#2a2a2a"/>
+      <line x1="60" y1="40" x2="60" y2="320" stroke="#2a2a2a"/>
 
       <!-- x labels -->
-      <text x="160" y="345" text-anchor="middle" font-size="12" fill="#8a93c9">Year 1</text>
-      <text x="380" y="345" text-anchor="middle" font-size="12" fill="#8a93c9">Year 2</text>
-      <text x="600" y="345" text-anchor="middle" font-size="12" fill="#8a93c9">Year 3</text>
-      <text x="820" y="345" text-anchor="middle" font-size="12" fill="#8a93c9">Year 4+</text>
-      <text x="40" y="50" text-anchor="end" font-size="11" fill="#8a93c9">$$$</text>
-      <text x="40" y="320" text-anchor="end" font-size="11" fill="#8a93c9">$0</text>
+      <text x="160" y="345" text-anchor="middle" font-size="12" fill="#888888">Year 1</text>
+      <text x="380" y="345" text-anchor="middle" font-size="12" fill="#888888">Year 2</text>
+      <text x="600" y="345" text-anchor="middle" font-size="12" fill="#888888">Year 3</text>
+      <text x="820" y="345" text-anchor="middle" font-size="12" fill="#888888">Year 4+</text>
+      <text x="40" y="50" text-anchor="end" font-size="11" fill="#888888">$$$</text>
+      <text x="40" y="320" text-anchor="end" font-size="11" fill="#888888">$0</text>
 
       <!-- Compression area: high then declining -->
       <path d="M 60 240 C 200 140 320 130 460 200 C 600 270 720 290 860 300 L 860 320 L 60 320 Z" fill="url(#ja)"/>
-      <path d="M 60 240 C 200 140 320 130 460 200 C 600 270 720 290 860 300" fill="none" stroke="#4d8cff" stroke-width="2"/>
+      <path d="M 60 240 C 200 140 320 130 460 200 C 600 270 720 290 860 300" fill="none" stroke="#0166ff" stroke-width="2"/>
 
       <!-- NSR area: low then rising -->
       <path d="M 60 310 C 200 290 320 240 460 170 C 600 100 720 70 860 50 L 860 320 L 60 320 Z" fill="url(#jb)"/>
-      <path d="M 60 310 C 200 290 320 240 460 170 C 600 100 720 70 860 50" fill="none" stroke="#2ee5c2" stroke-width="2"/>
+      <path d="M 60 310 C 200 290 320 240 460 170 C 600 100 720 70 860 50" fill="none" stroke="#0166ff" stroke-width="2"/>
 
       <!-- crossover marker -->
       <circle cx="460" cy="185" r="6" fill="#fff"/>
-      <line x1="460" y1="185" x2="460" y2="320" stroke="#1c2350" stroke-dasharray="3 4"/>
-      <text x="475" y="180" font-size="11" fill="#e9ecff">Crossover</text>
-      <text x="475" y="195" font-size="10" fill="#8a93c9">team ranks up</text>
+      <line x1="460" y1="185" x2="460" y2="320" stroke="#2a2a2a" stroke-dasharray="3 4"/>
+      <text x="475" y="180" font-size="11" fill="#ffffff">Crossover</text>
+      <text x="475" y="195" font-size="10" fill="#888888">team ranks up</text>
 
       <!-- legend -->
       <g transform="translate(620, 50)">
-        <rect width="14" height="14" fill="#4d8cff" rx="3"/>
-        <text x="22" y="12" font-size="12" fill="#e9ecff">Block 1 / Block 2 compression</text>
-        <rect y="22" width="14" height="14" fill="#2ee5c2" rx="3"/>
-        <text x="22" y="34" font-size="12" fill="#e9ecff">NSR ranking pool share</text>
+        <rect width="14" height="14" fill="#0166ff" rx="3"/>
+        <text x="22" y="12" font-size="12" fill="#ffffff">Block 1 / Block 2 compression</text>
+        <rect y="22" width="14" height="14" fill="#0166ff" rx="3"/>
+        <text x="22" y="34" font-size="12" fill="#ffffff">NSR ranking pool share</text>
       </g>
     </svg>
 
@@ -549,11 +608,11 @@
       </div>
       <div class="panel p-5">
         <div class="tag mb-2">year 2 — crossover</div>
-        <p style="color:var(--mute)">Your team starts ranking up. Compression drops. But your Win Score climbs and NSR begins to dominate.</p>
+        <p style="color:var(--mute)">Your team starts ranking up. Compression drops. Your action history and team support begin to matter more.</p>
       </div>
       <div class="panel p-5">
         <div class="tag mb-2">year 3+</div>
-        <p style="color:var(--mute)">NSR is most of your income. It's a slice of every dollar across the entire network — passive, recurring, scaling with adoption.</p>
+        <p style="color:var(--mute)">NSR becomes the main reward engine. It is action-based, recurring, and tied to adoption across the whole network.</p>
       </div>
     </div>
   </div>
@@ -574,7 +633,7 @@
         <p><span style="color:var(--text)" class="font-semibold">Proof of Stake</span> rewards people for locking up money.</p>
         <p><span class="grad-text font-semibold">Proof of Action</span> rewards people for creating real value.</p>
         <div class="hairline"></div>
-        <p>Buy a BlockBot. Earn 10% on every sale you make and 10% on every sale your team makes — forever.
+        <p>Buy a BlockBot. Earn 10% on every sale you make and 10% on every sale your team makes while you keep building.
         Sell 4 to become Impact, double your direct income, and unlock the daily NSR ranking pools where the lion's share of revenue gets distributed.</p>
         <p>Spend the WIN you earn on gas, renewals, and products in the ecosystem. The loop closes. The flywheel turns. The network grows.</p>
       </div>
